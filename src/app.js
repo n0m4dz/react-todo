@@ -1,3 +1,2 @@
-import './pages/home'
-
-console.log('Test App');
+import Frui, {Orange as O} from "./pages/esClass"
+new Frui();
