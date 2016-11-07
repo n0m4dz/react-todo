@@ -1,7 +1,8 @@
 import React from 'react'
 import {render} from 'react-dom'
+import Counter from './containers/Counter'
 
 render(
-	<h1>Hello</h1>,
+	<Counter />,
 	document.getElementById('root')
-	)
+)
