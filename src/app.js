@@ -1,10 +1,9 @@
 import React from 'react'
 import {render} from 'react-dom'
-import Counter from './containers/Counter'
+import Todo from './Todo'
 
-var initState = window.initState;
 
 render(
-    <Counter default={10} init={initState.countList} users={initState.users}/>,
+    <Todo>React Todo</Todo>,
     document.getElementById('root')
 )
