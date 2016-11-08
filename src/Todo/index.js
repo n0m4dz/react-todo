@@ -29,7 +29,7 @@ export default class Todo extends Component {
         super(props);
         this.state = {
             todos: todos,
-            filter: 'active'
+            filterVal: 'active'
         }
     }
 
@@ -44,20 +44,36 @@ export default class Todo extends Component {
     }
 
     filter(filterValue) {
-        this.setState({
-            filter: filterValue
-        })
+        switch (filterValue) {
+            case 'active':
+                this.setState({
+                    filterVal: filterValue,
+                    todos: todos.filter(item => !item.completed)
+                })
+                break
+            case 'completed':
+                this.setState({
+                    filterVal: filterValue,
+                    todos: todos.filter(item => item.completed)
+                })
+                break
+            default:
+                this.setState({
+                    filterVal: filterValue,
+                    todos: todos
+                });
+                break
+        }
     }
 
     componentWillMount() {
         this.setState({
-            filter: 'all'
+            filterVal: 'all'
         })
     }
 
     render() {
-        var {todos, filter} = this.state;
-
+        var {todos, filterVal} = this.state;
         return (
             <div className="todo">
                 <header className="header">
@@ -72,8 +88,8 @@ export default class Todo extends Component {
                 </form>
                 <hr/>
 
-                <h4 className="todo-title">{filter} todo list</h4>
-                <TodoList todos={todos} filter={filter}/>
+                <h4 className="todo-title">{filterVal} todo list</h4>
+                <TodoList todos={todos}/>
                 <br/>
 
                 <div className="action-btns">
