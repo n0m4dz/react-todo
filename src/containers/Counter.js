@@ -1,18 +1,17 @@
 import React, {Component} from 'react'
-import Button from '../components/Button'
+import Button, {btn} from '../components/Button'
 
 export default class Counter extends Component{
 
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 
 		this.state = {
-			countLbl: 0
+			countLbl: props.default
 		}
 	}
 
 	increase(){
-		console.log('Im clicked');
 		this.setState(
 				{
 					countLbl: ++this.state.countLbl
@@ -34,7 +33,8 @@ export default class Counter extends Component{
 			<label>{ this.state.countLbl }</label>
 				<br />
 				<button onClick={this.increase.bind(this)}>+</button>
-				<Button text='-' clickfn={this.decrease.bind(this)} />
+				<Button text='-' aa="apple" clickfn={this.decrease.bind(this)} />
+				<btn />
 			</div>
 		)
 	}

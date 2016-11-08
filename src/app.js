@@ -3,6 +3,6 @@ import {render} from 'react-dom'
 import Counter from './containers/Counter'
 
 render(
-	<Counter />,
+	<Counter default={12} />,
 	document.getElementById('root')
 )
