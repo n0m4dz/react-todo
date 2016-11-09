@@ -7,8 +7,8 @@ const TodoItem = ({item, actions}) => {
     let status = item.completed === true ? 'checked' : ''
     return (
         <li className="list-group-item">
-            <input type="checkbox" checked={status} onChange={()=>actions.toggle(item.id)}/> {item.job} <a
-            className="delete-btn">x</a>
+            <input type="checkbox" checked={status} onChange={()=>actions.toggle(item.id)}/> {item.job}
+            <a className="delete-btn" onClick={()=>actions.delete(item.id)}>x</a>
         </li>
     )
 }
