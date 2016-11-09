@@ -6,18 +6,22 @@ import TodoList from './components/TodoList'
 
 var todos = [
     {
+        id: 1,
         job: 'Get up',
         completed: true
     },
     {
+        id: 2,
         job: 'Go to work',
         completed: true
     },
     {
+        id: 3,
         job: 'Have lunch',
         completed: false
     },
     {
+        id: 4,
         job: 'Go back to home',
         completed: false
     }
@@ -38,9 +42,19 @@ export default class Todo extends Component {
         //console.log('Im working')
     }
 
-    toggle(item) {
-        item.completed = !item.completed;
-        return item;
+    toggle(id) {
+        let oldTodos = this.state.todos;
+        let newTodos = oldTodos.map((t) => {
+            if (t.id == id) {
+                t.completed = !t.completed
+            }
+            return t
+        })
+
+        this.setState({
+            todos: newTodos
+        })
+
     }
 
     filter(filterValue) {
@@ -89,7 +103,7 @@ export default class Todo extends Component {
                 <hr/>
 
                 <h4 className="todo-title">{filterVal} todo list</h4>
-                <TodoList todos={todos}/>
+                <TodoList todos={todos} actions={ {toggle: this.toggle.bind(this)}}/>
                 <br/>
 
                 <div className="action-btns">

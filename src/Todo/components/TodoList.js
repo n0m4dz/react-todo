@@ -6,11 +6,11 @@ import TodoItem from './TodoItem'
 
 export default class TodoList extends Component {
     render() {
-        var {todos} = this.props;
+        var {todos, actions} = this.props;
         return (
             <ul className="list-group">
                 {
-                    todos.map((t, i)=> <TodoItem job={t.job} completed={t.completed} key={`todo-${i}`}/>)
+                    todos.map((t, i)=> <TodoItem item={t} key={`todo-${i}`} actions={actions}/>)
                 }
             </ul>
         )

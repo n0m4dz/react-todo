@@ -3,11 +3,12 @@
  */
 import React, {PropTypes} from 'react'
 
-const TodoItem = ({job, completed}) => {
-    let status = completed === true ? 'checked' : ''
+const TodoItem = ({item, actions}) => {
+    let status = item.completed === true ? 'checked' : ''
     return (
         <li className="list-group-item">
-            <input type="checkbox" checked={status} onChange=""/> {job} <a className="delete-btn">x</a>
+            <input type="checkbox" checked={status} onChange={()=>actions.toggle(item.id)}/> {item.job} <a
+            className="delete-btn">x</a>
         </li>
     )
 }
