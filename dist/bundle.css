@@ -1,0 +1,41 @@
+.todo {
+  width: 300px;
+  margin: 20px auto;
+  border: solid 2px #2c3e50;
+  overflow: hidden;
+  padding: 10px;
+  background: #eeeeee; }
+
+header {
+  background: #2c3e50;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  margin: -10px -10px 20px -10px;
+  text-transform: uppercase; }
+
+.todo-title {
+  text-align: center;
+  margin-bottom: 15px; }
+
+form {
+  margin: 0 auto;
+  text-align: center; }
+
+form > button {
+  margin-left: 5px; }
+
+.action-btns {
+  text-align: center; }
+
+.action-btns > button {
+  margin: 0 4px; }
+
+.delete-btn {
+  float: right;
+  color: #e74c3c !important;
+  cursor: pointer; }
+
+.timer-toggle {
+  text-align: center;
+  padding: 10px; }
