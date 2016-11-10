@@ -28,6 +28,6 @@ module.exports = {
     },
     postcss: [autoprefixer({browsers: ['last 3 versions']})],
     resolve: {
-        extensions: ['', '.js', '.scss', '.less']
+        extensions: ['', '.js', '.scss']
     }
 }
