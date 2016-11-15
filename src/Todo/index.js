@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react';
 import TodoList from './components/TodoList'
+import Immutable from 'immutable';
 
 var todos = [
     {
@@ -27,18 +28,20 @@ var todos = [
     }
 ]
 
+var initState = {
+    todos: todos,
+    filterVal: 'active',
+    timer: false,
+    typingTodo: '',
+    lastId: todos[todos.length - 1].id
+}
+
 export default class Todo extends Component {
 
     constructor(props) {
         super(props);
-        console.log('Constructor', todos);
-        this.state = {
-            todos: Object.assign([], todos),
-            filterVal: 'active',
-            timer: false,
-            typingTodo: '',
-            lastId: todos[todos.length - 1].id
-        }
+        this.state = Immutable.fromJS(initState);
+        console.log(this.state);
     }
 
     add() {
@@ -49,15 +52,18 @@ export default class Todo extends Component {
     toggle(id) {
         let oldTodos = this.state.todos;
         let newTodos = oldTodos.map((t) => {
-            if (t.id == id) {
-                t.completed = !t.completed
+            if (t.get('id') == id) {
+                var t2 = t.set('completed', !t.get('completed'))
+                return t2;
             }
-            return t
+            return t;
         })
 
         this.setState({
             todos: newTodos
         })
+
+        console.log(this.state.todos);
     }
 
     deleteTodo(id) {
@@ -116,10 +122,18 @@ export default class Todo extends Component {
     filter(filterValue) {
         switch (filterValue) {
             case 'active':
-                this.setState({
-                    filterVal: filterValue,
-                    todos: todos.filter(item => !item.completed)
+                console.log(this.state.get('todos'));
+
+                var newTodos = this.state.get('todos').filter((todo)=>{
+                    if(todo.get('completed') == false){
+                         return todo;
+                     }
                 })
+                console.log(newTodos);
+                var newState = this.state.set('todos', newTodos);
+                console.log(newState);
+                this.setState(newState);
+                console.log(this.state);
                 break
             case 'completed':
                 this.setState({
@@ -137,15 +151,14 @@ export default class Todo extends Component {
     }
 
     componentWillMount() {
-        this.setState({
-            filterVal: 'all'
-        })
+        // this.setState({
+        //     filterVal: 'all'
+        // })
     }
 
     render() {
-        console.log(todos);
-
-        var {todos, filterVal} = this.state;
+        var todos = this.state.get('todos');
+        var filterVal = this.state.get('filterVal');
         var actions = {
             toggle: this.toggle.bind(this),
             delete: this.deleteTodo.bind(this)
