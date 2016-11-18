@@ -7,31 +7,18 @@ import {Provider} from 'react-redux'
 import configureStore from './redux/store'
 import Todo from './Todo'
 
-var todos = [
-    {
-        id: 1,
-        job: 'Get up',
-        completed: true
-    },
-    {
-        id: 2,
-        job: 'Go to work',
-        completed: true
-    },
-    {
-        id: 3,
-        job: 'Have lunch',
-        completed: false
-    },
-    {
-        id: 4,
-        job: 'Go back to home',
-        completed: false
-    }
-]
+var todos = {
+    fetching: false,
+    fetched: false,
+    todos: [],
+    err: null
+}
 
-var store = configureStore(fromJS(todos))
-console.log(store.getState());
+var initState = {
+    todos: fromJS(todos)
+}
+
+var store = configureStore(initState)
 
 render(
     <Provider store={store}>

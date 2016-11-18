@@ -2,11 +2,13 @@
  * Created by n0m4dz on 11/16/16.
  */
 import * as C from './consts'
+import axios from 'axios'
 
 let actions = {
     fetchTodo: function () {
         return {
-            type: C.FETCH_TODO
+            type: C.FETCH_TODO,
+            payload: axios.get('http://localhost:8000')
         }
     },
     toggleTodo: function (id) {
@@ -24,7 +26,8 @@ let actions = {
     addTodo: function (job) {
         return {
             type: C.ADD_TODO,
-            job: job
+            payload: axios.get('http://localhost:8000')
+            // job: job
         }
     }
 }

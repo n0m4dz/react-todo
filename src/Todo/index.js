@@ -4,7 +4,7 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {toJS} from 'immutable'
+import {fromJS} from 'immutable'
 
 import actions from '../redux/actions'
 import TodoList from './components/TodoList'
@@ -14,9 +14,14 @@ class Todo extends Component {
         super(props);
     }
 
+    componentWillMount() {
+        this.props.actions.fetchTodo();
+    }
+
     render() {
-        const {dispatch, todos, actions} = this.props;
+        const {dispatch, myState, actions} = this.props;
         const {toggleTodo, deleteTodo} = actions;
+
         const childActions = {
             toggle: toggleTodo,
             delete: deleteTodo
@@ -30,7 +35,7 @@ class Todo extends Component {
                         React Todo
                     </header>
                     <div>
-                        <TodoList todos={todos} actions={childActions}/>
+                        <TodoList todos={myState.get('todos')} actions={childActions}/>
                     </div>
                 </div>
             </div>
@@ -40,11 +45,11 @@ class Todo extends Component {
 
 function mapStateToProps(state) {
     return {
-        todos: state
+        myState: state.todos
     }
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(actions, dispatch)
     }

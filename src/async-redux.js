@@ -1,23 +1,3 @@
-// import './sass/app'
-//
-// import React from 'react'
-// import {render} from 'react-dom'
-// import {fromJS} from 'immutable'
-// import {Provider} from 'react-redux'
-//
-// import configureStore from './redux/store'
-// import Todo from './Todo'
-//
-//
-// var store = configureStore(fromJS(todos))
-//
-// render(
-//     <Provider store={store}>
-//         <Todo />
-//     </Provider>,
-//     document.getElementById('root')
-// )
-
 //REDUX
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Map, List, fromJS} from 'immutable';

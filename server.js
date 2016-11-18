@@ -1,9 +1,9 @@
-var webpack = require('webpack');
-var server = require('webpack-dev-server');
-var config = require('./webpack.config.js');
+let webpack = require('webpack');
+let server = require('webpack-dev-server');
+let config = require('./webpack.config.js');
 
-var compiler = webpack(config);
-var serverConfig = {
+let compiler = webpack(config);
+let serverConfig = {
     contentBase: './dist'
 }
 
