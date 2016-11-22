@@ -51,4 +51,4 @@ $users = [
 
 
 
-echo json_encode($users);
+echo json_encode($todos);

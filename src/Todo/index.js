@@ -2,6 +2,7 @@
  * Created by n0m4dz on 11/8/16.
  */
 import React, {Component} from 'react'
+        import {render, unmountComponentAtNode} from 'react-dom'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {fromJS} from 'immutable'
@@ -10,6 +11,18 @@ import actions from '../redux/actions'
 import TodoList from './components/TodoList'
 import {Link} from 'react-router'
 
+class TempComp extends Component{
+    render(){
+        return(
+            <h1>I am temp component</h1>
+        )
+    }
+
+    componentWillUnmount(){
+        console.log('bye');
+    }
+}
+
 class Todo extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +30,14 @@ class Todo extends Component {
 
     componentWillMount() {
         this.props.actions.fetchTodo();
+    }
+
+    create(){
+        render(<TempComp/>, document.getElementById('tempContainer'))
+    }
+
+    purge(){
+        unmountComponentAtNode(document.getElementById('tempContainer'))
     }
 
     render() {
@@ -30,6 +51,10 @@ class Todo extends Component {
 
         return (
             <div>
+                <button onClick={this.create.bind(this)}> create </button>
+                <button onClick={this.purge.bind(this)}> purge </button>
+                <div id="tempContainer"></div>
+
                 <div className="todo">
                     <header className="header">
                         React Todo

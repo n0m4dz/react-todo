@@ -17,6 +17,7 @@ var todos = {
 
 var posts = []
 
+
 var initState = {
     todos: fromJS(todos),
     posts:fromJS(posts)
