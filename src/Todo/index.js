@@ -8,6 +8,7 @@ import {fromJS} from 'immutable'
 
 import actions from '../redux/actions'
 import TodoList from './components/TodoList'
+import {Link} from 'react-router'
 
 class Todo extends Component {
     constructor(props) {
@@ -29,23 +30,42 @@ class Todo extends Component {
 
         return (
             <div>
-
                 <div className="todo">
                     <header className="header">
                         React Todo
                     </header>
                     <div>
-                        <TodoList todos={myState.get('todos')} actions={childActions}/>
+                        <TodoList todos={myState.get('todoList')} actions={childActions}/>
                     </div>
+                    <div>
+                        <Link to="/active">Active</Link> | <Link to="/completed">Completed</Link> | <Link
+                        to="/all">All</Link>
+                    </div>
+
                 </div>
+
             </div>
         )
     }
 }
 
-function mapStateToProps(state) {
+function getFilteredTodos(todos, filter) {
+
+    switch (filter) {
+        case 'all':
+            return todos
+        case 'active':
+            return todos.set('todoList', todos.get('todoList').filter((t) => !t.get('completed')))
+        case 'completed':
+            return todos.set('todoList', todos.get('todoList').filter(t => t.get('completed')))
+    }
+}
+
+function mapStateToProps(state, myProps) {
+    let filter = myProps.params.filter || 'all'
+
     return {
-        myState: state.todos
+        myState: getFilteredTodos(state.todos, filter)
     }
 }
 

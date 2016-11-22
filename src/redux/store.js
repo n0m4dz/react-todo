@@ -3,6 +3,7 @@
  */
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux'
 import todoReduce from './reducers'
+import postReducer from './postReducer'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise-middleware'
 
@@ -12,7 +13,8 @@ let finalCreateStore = compose(
 )(createStore)
 
 var reducer = combineReducers({
-    todos: todoReduce
+    todos: todoReduce,
+    posts: postReducer
 })
 
 export default function configureStore(initialState) {
