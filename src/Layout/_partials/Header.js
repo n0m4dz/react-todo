@@ -8,19 +8,21 @@ class Header extends Component {
     render() {
         return (
             <header>
-                <div className="navbar">
-                    <ul>
-                        <li>
-                            <Link to="/home">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/users">Users</Link>
-                        </li>
-                        <li>
-                            <Link to="/todo">Todo</Link>
-                        </li>
-                    </ul>
-                </div>
+                <nav className="navbar navbar-default">
+                    <div class="navbar-header">
+                        <ul>
+                            <li>
+                                <Link to="/home">Home</Link>
+                            </li>
+                            <li>
+                                <Link to="/users">Users</Link>
+                            </li>
+                            <li>
+                                <Link to="/todo">Todo</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </header>
         )
     }

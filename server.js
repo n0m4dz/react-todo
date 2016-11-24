@@ -1,13 +1,26 @@
-let webpack = require('webpack');
-let server = require('webpack-dev-server');
-let config = require('./webpack.config.js');
+var express = require('express')
+var webpack = require('webpack')
+var webpackDevConfig = require('./webpack.config')
+var WebpackDevMiddleware = require('webpack-dev-middleware')
+var app = express()
 
-let compiler = webpack(config);
-let serverConfig = {
-    contentBase: './dist'
-}
+var compiler = webpack(webpackDevConfig);
+//Webpack Middleware
+app.use(WebpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: "/",
+    watchOptions: {
+        poll: true
+    }
+}));
 
-new server(compiler, serverConfig).listen(3000, function (err) {
-    if (err) console.log(err);
-    console.log('Running at Localhost:3000');
+app.use(express.static('./dist'));
+app.set('view engine', 'ejs');
+
+app.get('/', function (req, res) {
+    res.render('index')
+})
+
+app.listen(3000, function () {
+    console.log('React App is running on port 3000!')
 })
