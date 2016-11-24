@@ -3,10 +3,13 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var autoprefixer = require('autoprefixer')
 
 module.exports = {
-    entry: __dirname + '/src/app',
+    entry: {
+        app: __dirname + '/src/app',
+        vendor: __dirname + '/vendor/vendor'
+    },
     output: {
         path: __dirname + '/dist',
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     module: {
         loaders: [
@@ -21,7 +24,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("bundle.css")
+        new ExtractTextPlugin("[name].css")
     ],
     sassLoader: {
         includePaths: [path.resolve(__dirname, "./src/sass/")]
