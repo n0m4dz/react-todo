@@ -22,22 +22,33 @@ app.use(express.static('./dist'));
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    res.render('index')
+    var data = {
+        users: [
+            {
+                name: 'bat'
+            },
+            {
+                name: 'dorj'
+            }
+        ],
+        pageTitle: 'IT IS HOME PAGE'
+    };
+    res.render('index', {data: data})
 })
 
 app.get('/chat', function (req, res) {
     res.render('chat')
 })
 
-io.on('connection', function(socket){
+io.on('connection', function (socket) {
     console.log('HTTP client is connected');
 
-    socket.on('send', function(data){
+    socket.on('send', function (data) {
         console.log(data);
         io.emit('received', data)
     })
 
-    socket.on('disconnect', function(){
+    socket.on('disconnect', function () {
         console.log('Client disconnected');
     });
 });

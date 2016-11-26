@@ -3,7 +3,14 @@ import React, {Component} from 'react'
 class Home extends Component{
     render(){
         return(
-            <h1>I am home page</h1>
+            <h1>
+                {window.INITSTATE.pageTitle}
+                {
+                    window.INITSTATE.users.map((u, i)=>{
+                        return <li key={`user-${i}`}>{u.name}</li>
+                    })
+                }
+            </h1>
         )
     }
 }
