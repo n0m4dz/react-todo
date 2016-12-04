@@ -1,0 +1,8 @@
+vagrant init -> ankh vagrant-g achaallah
+vagrant up -> virtual mashiniig asaah (herev ankh asaaj bgaa bol provision unshina)
+vagrant reload -> restart hiih
+vagrant halt -> shutdown hiih
+vagrant [reload, up] --provision -> provision tohirgoog unshij asaah
+vagrant destroy -> tuhain box-g bur moson ustgah
+vagrant share -> tunnel uusgej online bolgoh
+vagrant box list -> suusan box-uudiin jagsaaltiig harah

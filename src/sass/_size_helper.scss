@@ -1,0 +1,9 @@
+@mixin fontsize($min: 8) {
+    $i: $min;
+    @while $i <= 100 {
+        .s#{$i} {
+            font-size: #{$i}px !important;
+        }
+        $i: $i + 1;
+    }
+}

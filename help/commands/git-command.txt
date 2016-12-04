@@ -1,0 +1,22 @@
+git init -> anh achaallah
+git add [-A, ., filename] -> stage-ruu file shiljuuleh
+git commit - m "commit message" -> local repo -ruu file-g shiljuuleh
+git remote add [connection-name] [git-ssh-path]
+git push [connection-name] [branch-name] -> zaasan branch-ruu file upload hiih
+
+
+git clone -b [branch-name] [git-ssh-path] [ , ., 'dir-name'] -> zaasan branch-g server-s huulj avah
+'' -> tuhain git repo-n nereer dir uusgej tatna
+. -> tuhain folder dotor (folder zaaval hooson bna)
+'dir-name' -> zaasan dir-g uusgej dotor ni repo-g tatna
+
+
+git pull [conection-name] [branch-name] -> zaasan branch-g tataj avah (server dr update orson bol conflict uusgene)
+git fetch -> tuhain bgaa HEAD-s hoishih oorchloltiig update hiine
+
+git checkout -> git-n branch, commit dotor shiljilt hiih (huuchin commit-s file sergeeh)
+
+.gitignore -> ug file dotor git-ruu push hiihgui file-uudiig ignore hiine
+
+git remote -> remote holboltiin jagsaaltiig harah
+git branch -> branch-uudiin jagsaaltiig harah
